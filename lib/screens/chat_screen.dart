@@ -32,6 +32,7 @@ class _ChatScreenState extends State<ChatScreen> {
               messageList.add(MessageModel.fromJson(snapshot.data!.docs[i]));
             }
             return Scaffold(
+              
                 appBar: AppBar(
                   //    automaticallyImplyLeading: false,
                   backgroundColor: ColorManager.lightBlue,
@@ -41,6 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 body: Column(
                   children: [
                     Expanded(
+                    
                       child: ListView.builder(
                         reverse: true,
                         controller: _scrollController,

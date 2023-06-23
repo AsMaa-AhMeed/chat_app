@@ -37,9 +37,11 @@ class _SignupScreenState extends State<SignupScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      const SizedBox(height:60),
                       Lottie.network(
                           'https://assets5.lottiefiles.com/packages/lf20_zw0djhar.json',
                           height: 250),
+                           const SizedBox(height: 40),
                       Text('SIGN UP',
                           style: TextStyle(
                               fontSize: 24,
