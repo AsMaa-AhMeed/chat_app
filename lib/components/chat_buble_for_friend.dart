@@ -1,4 +1,3 @@
-import 'package:chat_app_2/components/color_manager.dart';
 import 'package:chat_app_2/models/message_model.dart';
 import 'package:flutter/material.dart';
 
