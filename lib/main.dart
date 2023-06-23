@@ -1,5 +1,6 @@
 import 'package:chat_app_2/components/firebase_options.dart';
 import 'package:chat_app_2/cubits/Login_cubit/login_cubit.dart';
+import 'package:chat_app_2/cubits/signup_cubit/sign_up_cubit.dart';
 import 'package:chat_app_2/screens/screens.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,15 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
-    return BlocProvider(
-      create: (context) => LoginCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LoginCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SignUpCubit(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {

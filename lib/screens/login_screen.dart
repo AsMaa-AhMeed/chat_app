@@ -1,20 +1,21 @@
 import 'package:chat_app_2/cubits/Login_cubit/login_cubit.dart';
 import 'package:chat_app_2/helper/show_snack_bar.dart';
 import 'package:chat_app_2/screens/screens.dart';
-import 'package:chat_app_2/services/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../components/components.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   String? email;
   String? password;
   bool isLoading = false;
   static String id = '/loginRoute';
   GlobalKey<FormState> formKey = GlobalKey();
+
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
