@@ -59,6 +59,7 @@ class LoginScreen extends StatelessWidget {
                             email = data;
                           },
                           hintText: 'Email',
+                          prefixIcon: const Icon(Icons.person_outlined),
                           keyboardType: TextInputType.emailAddress,
                         ),
                         const SizedBox(height: 14),
@@ -67,6 +68,9 @@ class LoginScreen extends StatelessWidget {
                             password = data;
                           },
                           hintText: 'Password',
+                          prefixIcon: const Icon(Icons.lock_rounded),
+                          suffixIcon: const Icon(Icons.remove_red_eye_outlined),
+                          obscureText: true,
                           keyboardType: TextInputType.visiblePassword,
                         ),
                         const SizedBox(height: 14),
