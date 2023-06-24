@@ -5,9 +5,16 @@ class CustomTextFormField extends StatelessWidget {
   final String hintText;
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
 
   const CustomTextFormField(
-      {super.key, required this.hintText, this.keyboardType, this.onChanged});
+      {super.key,
+      required this.hintText,
+      this.keyboardType,
+      this.onChanged,
+      this.prefixIcon,
+      this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -16,21 +23,22 @@ class CustomTextFormField extends StatelessWidget {
         if (data!.isEmpty) {
           return 'Field is Required!';
         }
+        return null;
       },
       keyboardType: keyboardType,
       onChanged: onChanged,
       decoration: InputDecoration(
-        hintText: hintText,
-        enabledBorder: buildBorder(),
-        border: buildBorder(color:  ColorManager.blue),
-        
-      ),
+          hintText: hintText,
+          enabledBorder: buildBorder(),
+          border: buildBorder(color: ColorManager.blue),
+          suffixIcon: suffixIcon,
+          prefixIcon: prefixIcon),
     );
   }
 
   OutlineInputBorder buildBorder({Color? color}) {
     return OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: color  ?? Colors.grey, width: 2));
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide(color: color ?? Colors.grey, width: 2));
   }
 }

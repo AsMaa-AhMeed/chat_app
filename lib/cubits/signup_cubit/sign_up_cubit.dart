@@ -10,6 +10,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   Future<void> registerUser({required String email,required String password}) async {
     emit(SignUpLoading());
     try {
+      // ignore: unused_local_variable
       UserCredential user = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       emit(SignUpSuccess());
