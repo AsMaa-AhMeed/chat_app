@@ -21,7 +21,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final ScrollController _scrollController = ScrollController();
   CollectionReference messages =
       FirebaseFirestore.instance.collection('messages');
-  List<MessageModel> messageList = [];
+//  List<MessageModel> messageList = [];
   String? message;
   @override
   Widget build(BuildContext context) {
@@ -37,23 +37,20 @@ class _ChatScreenState extends State<ChatScreen> {
         body: Column(
           children: [
             Expanded(
-              child: BlocConsumer<ChatCubit, ChatState>(
-                listener: (context, state) {
-                  if (state is ChatSuccess) {
-                    messageList = state.messageList;
-                  }
-                },
+              child: BlocBuilder<ChatCubit, ChatState>(
                 builder: (context, state) {
+                  var messagesList =
+                      BlocProvider.of<ChatCubit>(context).messageList;
                   return ListView.builder(
                     reverse: true,
                     controller: _scrollController,
-                    itemCount: messageList.length,
+                    itemCount: messagesList.length,
                     itemBuilder: (context, index) {
-                      return messageList[index].id == email
+                      return messagesList[index].id == email
                           ? ChatBuble(
-                              message: messageList[index],
+                              message: messagesList[index],
                             )
-                          : ChatForFriendBuble(message: messageList[index]);
+                          : ChatForFriendBuble(message: messagesList[index]);
                     },
                   );
                 },
@@ -64,7 +61,6 @@ class _ChatScreenState extends State<ChatScreen> {
               child: TextField(
                   controller: controller,
                   onSubmitted: (data) {
-                  
                     BlocProvider.of<ChatCubit>(context)
                         .sendMessage(message: data, email: "$email");
                     controller.clear();
@@ -76,7 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     );
                   },
                   onChanged: (data) {
-                      message = data;
+                    message = data;
                   },
                   decoration: InputDecoration(
                     hintText: 'Type a message',
