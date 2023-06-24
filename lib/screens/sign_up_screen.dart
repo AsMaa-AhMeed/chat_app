@@ -59,6 +59,7 @@ class SignupScreen extends StatelessWidget {
                           const SizedBox(height: 14),
                           CustomTextFormField(
                             hintText: 'Email',
+                            prefixIcon: const Icon(Icons.person_outlined),
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (data) {
                               email = data;
@@ -67,6 +68,10 @@ class SignupScreen extends StatelessWidget {
                           const SizedBox(height: 14),
                           CustomTextFormField(
                             hintText: 'Password',
+                            prefixIcon: const Icon(Icons.lock_rounded),
+                            suffixIcon:
+                                const Icon(Icons.remove_red_eye_outlined),
+                            obscureText: true,
                             keyboardType: TextInputType.visiblePassword,
                             onChanged: (data) {
                               password = data;
